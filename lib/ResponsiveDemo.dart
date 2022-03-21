@@ -22,17 +22,17 @@ class ResponsiveDemo extends StatelessWidget {
   }
 }
 
-Widget horizontalLayout() => Flex(
-      direction: Axis.horizontal,
+Widget horizontalLayout() => Row(
+      //direction: Axis.horizontal,
       children: [
         Expanded(child: imageView()),
         //Expanded(child:textView()),
-        Expanded(child: LoginFormValidation())
+        Expanded(child: InfoForm())
       ],
     );
 
-Widget verticalLayout() => Flex(
-      direction: Axis.vertical,
+Widget verticalLayout() => Column(
+      //direction: Axis.vertical,
       children: [
         Expanded(child: imageView()),
         Flexible(
@@ -40,7 +40,7 @@ Widget verticalLayout() => Flex(
           heightFactor: 0.1,
         )),
         //Expanded(child:textView()),
-        Expanded(child: LoginFormValidation())
+        Expanded(child: InfoForm())
       ],
     );
 
@@ -48,7 +48,7 @@ Widget narrowLayout() => Column(
       children: [
         Expanded(child: imageView()),
         //Expanded(child: textView()),
-        Expanded(child: LoginFormValidation())
+        Expanded(child: InfoForm())
       ],
     );
 
@@ -85,41 +85,39 @@ Widget textView() {
   );
 }
 
-class LoginFormValidation extends StatefulWidget {
-  @override
-  _LoginFormValidationState createState() => _LoginFormValidationState();
-}
-
-class _LoginFormValidationState extends State<LoginFormValidation> {
-  GlobalKey<FormState> formkey = GlobalKey<FormState>();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Form(
-        key: formkey,
-        child: Column(
-          children: <Widget>[
-            TextFormField(
-              key: ValueKey(1),
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'First Name',
-                  hintText: 'Enter first name'),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            TextFormField(
-              key: ValueKey(2),
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Last Name',
-                  hintText: 'Enter last name'),
-            )
-          ],
-        ),
-      ),
-    );
+  class InfoForm extends StatefulWidget {
+    @override
+    _InfoFormState createState() => _InfoFormState();
   }
-}
+
+  class _InfoFormState extends State<InfoForm> {
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        body: Form(
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                key: ValueKey(1),
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'First Name',
+                    hintText: 'Enter first name'),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              TextFormField(
+                key: ValueKey(2),
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Last Name',
+                    hintText: 'Enter last name'),
+              )
+            ],
+          ),
+        ),
+      );
+    }
+  }
+
